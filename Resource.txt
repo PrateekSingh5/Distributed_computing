@@ -1,0 +1,21 @@
+5.7.2 The Readers–Writers Problem
+Suppose that a database is to be shared among several concurrent processes.
+Some of these processes may want only to read the database, whereas others
+may want to update (that is, to read and write) the database. We distinguish
+between these two types of processes by referring to the former as readers
+and to the latter as writers. Obviously, if two readers access the shared data
+simultaneously, no adverse effects will result. However, if a writer and some
+other process (either a reader or a writer) access the database simultaneously,
+chaos may ensue.
+To ensure that these difficulties do not arise, we require that the writers
+have exclusive access to the shared database while writing to the database. This
+synchronization problem is referred to as the readers–writers problem. Since it
+was originally stated, it has been used to test nearly every new synchronization
+primitive. The readers–writers problem has several variations, all involving
+priorities. The simplest one, referred to as the first readers–writers problem,
+requires that no reader be kept waiting unless a writer has already obtained
+permission to use the shared object. In other words, no reader should wait for
+other readers to finish simply because a writer is waiting. The second readers
+–writers problem requires that, once a writer is ready, that writer perform its
+write as soon as possible. In other words, if a writer is waiting to access the
+object, no new readers may start reading.
